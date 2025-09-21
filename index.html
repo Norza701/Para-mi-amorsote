@@ -14,10 +14,9 @@
     font-family: 'Comic Sans MS', cursive;
     overflow: hidden;
     transition: background 2s;
-    padding-top: 20px;
+    padding-top: 40px;
   }
 
-  /* Fondo animado */
   body.romantic {
     background: linear-gradient(270deg, #ff99cc, #ffb347, #ff6699, #ffcc70);
     background-size: 800% 800%;
@@ -34,8 +33,8 @@
     display: none;
     color: #e60073;
     text-shadow: 2px 2px #fff;
-    font-size: 2.2em;
-    margin-bottom: 30px;
+    font-size: 2em;
+    margin-bottom: 20px;
     text-align: center;
     animation: aparecerTexto 2s ease forwards;
   }
@@ -47,8 +46,8 @@
 
   /* Huevo */
   #egg {
-    width: 180px;
-    height: 240px;
+    width: 200px;
+    height: 260px;
     background: white;
     border-radius: 50% 50% 45% 45%;
     border: 4px solid #ccc;
@@ -57,285 +56,78 @@
     justify-content: center;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.5em;
     color: #666;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-    animation: bounce 1s infinite alternate;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
   }
 
-  @keyframes bounce {
-    from { transform: translateY(0); }
-    to { transform: translateY(-20px); }
+  #egg:hover {
+    transform: scale(1.1);
   }
 
-  /* Gatito más grande */
+  /* Gatito */
   #cat {
     display: none;
     position: relative;
-    width: 320px;
-    height: 360px;
-    margin-top: 10px;
-    animation: saltitos 1.5s ease-in-out infinite;
+    margin-top: 30px;
   }
 
-  @keyframes saltitos {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+  #cat img {
+    width: 300px;
+    animation: moverBrazo 1.2s infinite alternate ease-in-out;
   }
 
-  .body {
-    width: 200px;
-    height: 240px;
-    background: gray;
-    border-radius: 100px;
+  /* Animar la manita como si ofreciera el girasol */
+  @keyframes moverBrazo {
+    0% { transform: rotate(-2deg) translateY(0); }
+    100% { transform: rotate(2deg) translateY(-5px); }
+  }
+
+  /* Flor que sale como efecto */
+  #flower {
     position: absolute;
-    bottom: 0;
-    left: 60px;
+    top: 100px;
+    right: -30px;
+    width: 80px;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 1.5s ease;
   }
 
-  .stripe {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 240px;
-    background: white;
-    border-radius: 15px;
-  }
-
-  .head {
-    width: 180px;
-    height: 180px;
-    background: gray;
-    border-radius: 50%;
-    position: absolute;
-    top: -90px;
-    left: 70px;
-  }
-
-  .ear {
-    width: 60px;
-    height: 60px;
-    background: gray;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    position: absolute;
-  }
-
-  .ear.left { top: -30px; left: 25px; }
-  .ear.right { top: -30px; right: 25px; }
-
-  /* Ojitos de enamorado ❤️ */
-  .eye {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 60px;
-    font-size: 2em;
-  }
-
-  .eye.left { left: 35px; }
-  .eye.right { right: 35px; }
-
-  .eye::before {
-    content: "❤️";
-  }
-
-  /* Rubor en mejillas */
-  .blush {
-    width: 40px;
-    height: 20px;
-    background: pink;
-    border-radius: 50%;
-    opacity: 0.7;
-    position: absolute;
-    top: 110px;
-  }
-
-  .blush.left { left: 25px; }
-  .blush.right { right: 25px; }
-
-  .arms {
-    position: absolute;
-    top: 120px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .arm {
-    width: 60px;
-    height: 120px;
-    background: gray;
-    border-radius: 30px;
-    transform-origin: top center;
-    animation: wave 1s infinite alternate;
-  }
-
-  .arm.left { transform: rotate(20deg); }
-  .arm.right { transform: rotate(-20deg); }
-
-  @keyframes wave {
-    from { transform: rotate(20deg); }
-    to { transform: rotate(-20deg); }
-  }
-
-  /* Colita moviéndose */
-  .tail {
-    width: 40px;
-    height: 160px;
-    background: gray;
-    border-radius: 20px;
-    position: absolute;
-    bottom: 20px;
-    left: -30px;
-    transform-origin: top center;
-    animation: moverCola 1.2s ease-in-out infinite;
-  }
-
-  @keyframes moverCola {
-    0% { transform: rotate(20deg); }
-    50% { transform: rotate(-20deg); }
-    100% { transform: rotate(20deg); }
-  }
-
-  /* Girasol 🌻 con giro + brillo */
-  .sunflower {
-    position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 120px;
-    animation: girar 6s linear infinite, brillar 2s ease-in-out infinite alternate;
-  }
-
-  @keyframes girar {
-    from { transform: translateX(-50%) rotate(0deg); }
-    to { transform: translateX(-50%) rotate(360deg); }
-  }
-
-  @keyframes brillar {
-    from { filter: brightness(1); }
-    to { filter: brightness(1.4); }
-  }
-
-  .petal {
-    width: 40px;
-    height: 60px;
-    background: yellow;
-    border-radius: 50%;
-    position: absolute;
-    top: 30px;
-    left: 40px;
-    transform-origin: center;
-  }
-
-  .petal:nth-child(1) { transform: rotate(0deg) translateY(-60px); }
-  .petal:nth-child(2) { transform: rotate(45deg) translateY(-60px); }
-  .petal:nth-child(3) { transform: rotate(90deg) translateY(-60px); }
-  .petal:nth-child(4) { transform: rotate(135deg) translateY(-60px); }
-  .petal:nth-child(5) { transform: rotate(180deg) translateY(-60px); }
-  .petal:nth-child(6) { transform: rotate(225deg) translateY(-60px); }
-  .petal:nth-child(7) { transform: rotate(270deg) translateY(-60px); }
-  .petal:nth-child(8) { transform: rotate(315deg) translateY(-60px); }
-
-  .center {
-    width: 60px;
-    height: 60px;
-    background: brown;
-    border-radius: 50%;
-    position: absolute;
-    top: 30px;
-    left: 30px;
-  }
-
-  /* Corazones flotando */
-  .heart {
-    position: absolute;
-    font-size: 2rem;
-    color: #ff3366;
-    animation: floatUp 4s linear infinite;
-    opacity: 0.8;
-  }
-
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-250px) scale(1.5);
-      opacity: 0;
-    }
+  #flower.show {
+    transform: scale(3); /* efecto de salir hacia la pantalla */
+    opacity: 1;
   }
 </style>
 </head>
 <body>
-  <h1>💖 Te amo corazón 💖<br>De parte de: tu cagadin XD</h1>
-  <div id="egg">Tocar</div>
+  <h1 id="message">❤️ Te amo corazón ❤️<br>De parte de: tu cagadin XD</h1>
+  <div id="egg">🥚<br>Tócalo</div>
   <div id="cat">
-    <div class="head">
-      <div class="ear left"></div>
-      <div class="ear right"></div>
-      <div class="eye left"></div>
-      <div class="eye right"></div>
-      <div class="blush left"></div>
-      <div class="blush right"></div>
-    </div>
-    <div class="body">
-      <div class="stripe"></div>
-    </div>
-    <div class="arms">
-      <div class="arm left"></div>
-      <div class="arm right"></div>
-    </div>
-    <div class="tail"></div>
-    <div class="sunflower">
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="petal"></div>
-      <div class="center"></div>
-    </div>
+    <img src="gatito.png" alt="Gatito kawaii con girasol">
+    <img id="flower" src="girasol.png" alt="Girasol">
   </div>
-
-  <!-- Música -->
-  <audio id="musica" src="canciones.mp3.mp3" loop></audio>
+  <audio id="music" src="canciones.mp3.mp3"></audio>
 
 <script>
-  const egg = document.getElementById("egg");
-  const cat = document.getElementById("cat");
-  const title = document.querySelector("h1");
-  const musica = document.getElementById("musica");
+  const egg = document.getElementById('egg');
+  const cat = document.getElementById('cat');
+  const msg = document.getElementById('message');
+  const music = document.getElementById('music');
+  const flower = document.getElementById('flower');
 
-  egg.addEventListener("click", () => {
-    egg.style.display = "none";
-    cat.style.display = "block";
-    title.style.display = "block";
-    document.body.classList.add("romantic");
-    lanzarCorazones();
-    musica.play();
+  egg.addEventListener('click', () => {
+    egg.style.display = 'none';
+    document.body.classList.add('romantic');
+    msg.style.display = 'block';
+    cat.style.display = 'block';
+    music.play();
+
+    // mostrar animación del girasol saliendo
+    setTimeout(() => {
+      flower.classList.add('show');
+    }, 1000);
   });
-
-  function lanzarCorazones() {
-    setInterval(() => {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.bottom = "0px";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 4000);
-    }, 600);
-  }
 </script>
 </body>
 </html>
