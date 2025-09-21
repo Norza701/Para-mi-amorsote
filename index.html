@@ -9,14 +9,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100vh;
     font-family: 'Comic Sans MS', cursive;
     overflow: hidden;
     transition: background 2s;
+    padding-top: 20px;
   }
 
-  /* Fondo animado que se activa */
+  /* Fondo animado */
   body.romantic {
     background: linear-gradient(270deg, #ff99cc, #ffb347, #ff6699, #ffcc70);
     background-size: 800% 800%;
@@ -33,8 +34,8 @@
     display: none;
     color: #e60073;
     text-shadow: 2px 2px #fff;
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2.2em;
+    margin-bottom: 30px;
     text-align: center;
     animation: aparecerTexto 2s ease forwards;
   }
@@ -44,44 +45,52 @@
     to { opacity: 1; transform: scale(1); }
   }
 
-  /* Huevo inicial */
+  /* Huevo */
   #egg {
-    width: 120px;
-    height: 160px;
+    width: 180px;
+    height: 240px;
     background: white;
     border-radius: 50% 50% 45% 45%;
-    border: 3px solid #ccc;
+    border: 4px solid #ccc;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1.5em;
     color: #666;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
     animation: bounce 1s infinite alternate;
   }
 
   @keyframes bounce {
     from { transform: translateY(0); }
-    to { transform: translateY(-15px); }
+    to { transform: translateY(-20px); }
   }
 
-  /* Gatito */
+  /* Gatito más grande */
   #cat {
     display: none;
     position: relative;
-    width: 200px;
-    height: 220px;
+    width: 320px;
+    height: 360px;
+    margin-top: 10px;
+    animation: saltitos 1.5s ease-in-out infinite;
+  }
+
+  @keyframes saltitos {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
   }
 
   .body {
-    width: 140px;
-    height: 160px;
+    width: 200px;
+    height: 240px;
     background: gray;
-    border-radius: 70px;
+    border-radius: 100px;
     position: absolute;
     bottom: 0;
-    left: 30px;
+    left: 60px;
   }
 
   .stripe {
@@ -89,69 +98,76 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 20px;
-    height: 160px;
+    width: 30px;
+    height: 240px;
     background: white;
-    border-radius: 10px;
+    border-radius: 15px;
   }
 
   .head {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
     background: gray;
     border-radius: 50%;
     position: absolute;
-    top: -60px;
-    left: 40px;
+    top: -90px;
+    left: 70px;
   }
 
   .ear {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background: gray;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     position: absolute;
   }
 
-  .ear.left { top: -20px; left: 20px; }
-  .ear.right { top: -20px; right: 20px; }
+  .ear.left { top: -30px; left: 25px; }
+  .ear.right { top: -30px; right: 25px; }
 
+  /* Ojitos de enamorado ❤️ */
   .eye {
-    width: 20px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 60px;
+    font-size: 2em;
+  }
+
+  .eye.left { left: 35px; }
+  .eye.right { right: 35px; }
+
+  .eye::before {
+    content: "❤️";
+  }
+
+  /* Rubor en mejillas */
+  .blush {
+    width: 40px;
     height: 20px;
-    background: white;
+    background: pink;
     border-radius: 50%;
+    opacity: 0.7;
     position: absolute;
-    top: 40px;
+    top: 110px;
   }
 
-  .eye.left { left: 25px; }
-  .eye.right { right: 25px; }
-
-  .eye::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: black;
-    border-radius: 50%;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-  }
+  .blush.left { left: 25px; }
+  .blush.right { right: 25px; }
 
   .arms {
     position: absolute;
-    top: 80px;
+    top: 120px;
     width: 100%;
     display: flex;
     justify-content: space-between;
   }
 
   .arm {
-    width: 40px;
-    height: 80px;
+    width: 60px;
+    height: 120px;
     background: gray;
-    border-radius: 20px;
+    border-radius: 30px;
     transform-origin: top center;
     animation: wave 1s infinite alternate;
   }
@@ -164,37 +180,74 @@
     to { transform: rotate(-20deg); }
   }
 
-  /* Ramo de flores */
-  .flowers {
+  /* Colita moviéndose */
+  .tail {
+    width: 40px;
+    height: 160px;
+    background: gray;
+    border-radius: 20px;
     position: absolute;
-    bottom: 40px;
+    bottom: 20px;
+    left: -30px;
+    transform-origin: top center;
+    animation: moverCola 1.2s ease-in-out infinite;
+  }
+
+  @keyframes moverCola {
+    0% { transform: rotate(20deg); }
+    50% { transform: rotate(-20deg); }
+    100% { transform: rotate(20deg); }
+  }
+
+  /* Girasol 🌻 con giro + brillo */
+  .sunflower {
+    position: absolute;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
+    width: 120px;
+    height: 120px;
+    animation: girar 6s linear infinite, brillar 2s ease-in-out infinite alternate;
   }
 
-  .flower {
-    width: 25px;
-    height: 25px;
+  @keyframes girar {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+  }
+
+  @keyframes brillar {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.4); }
+  }
+
+  .petal {
+    width: 40px;
+    height: 60px;
     background: yellow;
     border-radius: 50%;
-    position: relative;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    transform-origin: center;
   }
 
-  .flower::after {
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: orange;
+  .petal:nth-child(1) { transform: rotate(0deg) translateY(-60px); }
+  .petal:nth-child(2) { transform: rotate(45deg) translateY(-60px); }
+  .petal:nth-child(3) { transform: rotate(90deg) translateY(-60px); }
+  .petal:nth-child(4) { transform: rotate(135deg) translateY(-60px); }
+  .petal:nth-child(5) { transform: rotate(180deg) translateY(-60px); }
+  .petal:nth-child(6) { transform: rotate(225deg) translateY(-60px); }
+  .petal:nth-child(7) { transform: rotate(270deg) translateY(-60px); }
+  .petal:nth-child(8) { transform: rotate(315deg) translateY(-60px); }
+
+  .center {
+    width: 60px;
+    height: 60px;
+    background: brown;
     border-radius: 50%;
     position: absolute;
-    top: 7px;
-    left: 7px;
+    top: 30px;
+    left: 30px;
   }
 
   /* Corazones flotando */
@@ -212,7 +265,7 @@
       opacity: 1;
     }
     100% {
-      transform: translateY(-200px) scale(1.5);
+      transform: translateY(-250px) scale(1.5);
       opacity: 0;
     }
   }
@@ -227,6 +280,8 @@
       <div class="ear right"></div>
       <div class="eye left"></div>
       <div class="eye right"></div>
+      <div class="blush left"></div>
+      <div class="blush right"></div>
     </div>
     <div class="body">
       <div class="stripe"></div>
@@ -235,17 +290,21 @@
       <div class="arm left"></div>
       <div class="arm right"></div>
     </div>
-    <div class="flowers">
-      <div class="flower"></div>
-      <div class="flower"></div>
-      <div class="flower"></div>
-      <div class="flower"></div>
-      <div class="flower"></div>
-      <div class="flower"></div>
+    <div class="tail"></div>
+    <div class="sunflower">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="center"></div>
     </div>
   </div>
 
-  <!-- Música en bucle -->
+  <!-- Música -->
   <audio id="musica" src="canciones.mp3.mp3" loop></audio>
 
 <script>
@@ -258,9 +317,9 @@
     egg.style.display = "none";
     cat.style.display = "block";
     title.style.display = "block";
-    document.body.classList.add("romantic"); // cambia el fondo
+    document.body.classList.add("romantic");
     lanzarCorazones();
-    musica.play(); // empieza la canción automáticamente
+    musica.play();
   });
 
   function lanzarCorazones() {
