@@ -1,7 +1,7 @@
 # 💖 Sorpresa para mi Bigotona 💖
 
 Un regalo romántico en forma de página web 🎁  
-Hecho con mucho amor 💕 por **tu cagadin XD**
+Hecho con mucho amor 💕 cagadin XD**
 
 ---
 
